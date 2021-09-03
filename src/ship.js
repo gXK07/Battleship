@@ -13,11 +13,13 @@ const Ship = (name, length) => {
         }
         return sunk
     }
+
     return {
         name,
         length,
         hit,
-        isSunk
+        isSunk,
+        boardLife
     }
 }
 

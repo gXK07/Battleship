@@ -1,9 +1,11 @@
 const gameBoard = () => {
 
+    const Ships = [];
+
     const field = () => {
         return {
         touch : false,
-        boat : 'no boat'
+        boat : undefined
     }
 }
     let board = {
@@ -26,28 +28,43 @@ const gameBoard = () => {
             }
     }
 
-    const touch = (x, y) => {
-        board[x][y].touch = true;
-    }
-
     const nextChar = (c) => {
         return String.fromCharCode(c.charCodeAt(0) + 1);
     }
 
-    const placeBoard = (ship, cor, dir) => {
+    const placeShip = (ship, cor, dir) => {
+        Ships.push(ship);
         let x = cor[0];
         let y = cor[1];
             for(let i= 0; i<ship.length; i++){
-                board[x][y].boat = ship.name;
+                board[x][y].boat = ship;
+                board[x][y].nbBoat = i;
                 (dir === 'horizontal') ? y++ : x = nextChar(x);
             }
     }
 
+    const AttackShip = (x, y) => {
+        board[x][y].touch = true;
+        if(board[x][y].boat){
+            board[x][y].boat.hit(board[x][y].nbBoat);
+        }
+    }
     
+    const gameOver = () => {
+        isOver = true;
+        Ships.forEach(ship => {
+            if(!(ship.isSunk())){
+                isOver = false
+            }
+        });
+        return isOver;
+    }
+
     return {
-        touch,
         board,
-        placeBoard
+        placeShip,
+        AttackShip,
+        gameOver
     }
 }
 
