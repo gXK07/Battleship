@@ -8,6 +8,7 @@ const gameBoard = () => {
         boat : undefined
     }
 }
+
     let board = {
         a : new Array(10),
         b : new Array(10),
