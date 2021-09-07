@@ -1,5 +1,51 @@
-.field{
-    height : 20px;
-    width : 20px;
-    border : solid black 0.1px;
+#playArea{
+    display: flex;
+    transform: translate(90px, 0px);
+}
+
+.rang{
+height: 50px;
+width: 500px;
+}
+
+#NG{
+    height: 70px;
+    width: 300px;
+    border-radius: 24px;
+    font-size: 25px;
+    border : 0.1px solid rgba(0, 0, 0, 0.301);
+    transform: translate(600px, -300px);
+}
+
+.hit{
+    background-color: red !important;
+}
+
+.touch{
+    background-color: blue !important;
+}
+
+#NG:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 10px 5px #5e5c5c75;
+}
+
+#GM1, #GM2{
+    height: 500px;
+    width: 500px;
+    display: inline;
+    margin: 50px;
+}
+.case{
+    padding : 0px;
+    margin : 0px;
+    height : 50px;
+    width : 50px;
+    border : solid rgba(49, 49, 49, 0.411) 0.1px;
+    background-color: white;
+}
+
+.case:hover{
+    cursor: pointer;
+    background-color: rgb(219, 219, 219);
 }

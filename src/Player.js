@@ -15,14 +15,14 @@ const Player = (type, board, ennemyBoard) => {
             }
         }
         const AttackIA = () => {
-            const cor = randomCor();
-            if(ennemyBoard.board[cor.x][cor.y].touch === false){
-            ennemyBoard.AttackShip(cor.x, cor.y)
+            let cor = randomCor();
+            while(ennemyBoard.board[cor.x][cor.y].touch === true){
+                cor = randomCor();
             }
-            else{
-                AttackIA();
-            }
+            ennemyBoard.AttackShip(cor.x, cor.y);
+            return cor;
         }
+
         return {
              type : 'IA',
              AttackIA,
