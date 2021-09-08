@@ -23,4 +23,11 @@ const Ship = (name, length) => {
     }
 }
 
-module.exports = Ship;
+const Carrier = Ship('Carrier', 5);
+const Battleship = Ship('Battleship', 4);
+const Cruiser = Ship('Cruiser', 3);
+const Submarine = Ship('Submarine', 2);
+const Destroyer = Ship('Destroyer', 1);
+const Ships = [Carrier, Battleship, Cruiser, Submarine, Destroyer];
+
+export {Ships, Ship}

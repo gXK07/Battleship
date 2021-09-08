@@ -35,12 +35,19 @@ const gameBoard = () => {
 
     const placeShip = (ship, cor, dir) => {
         Ships.push(ship);
-        let x = cor[0];
-        let y = cor[1];
+        console.log(dir);
+        let x = cor.x;
+        let y = cor.y;
             for(let i= 0; i<ship.length; i++){
+                console.log(x, y);
                 board[x][y].boat = ship;
                 board[x][y].nbBoat = i;
-                (dir === 'horizontal') ? y++ : x = nextChar(x);
+                if(dir === 'horizontal'){
+                    y++
+                }
+                else if (dir === 'vertical'){
+                     x = nextChar(x);
+                }
             }
     }
 

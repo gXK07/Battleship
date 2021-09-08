@@ -14,12 +14,11 @@ const createBoard = (nb) => {
     let container = undefined;
     let playArea = document.getElementById('playArea');
     if(nb === 1){
-    container = document.getElementById('GM1');
-    console.log(container);
+    container = document.getElementById('HumanZone');
     playArea.appendChild(container);
     }
     else if (nb === 2){
-    container = document.getElementById('GM2');
+    container = document.getElementById('IAZone');
     playArea.appendChild(container);
     }
     const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
@@ -41,7 +40,7 @@ const createBoard = (nb) => {
     return rang;
 }
 
-const listener = (rang1, rang2, player1, player2) => {
+const setShootListener = (rang1, rang2, player1, player2) => {
     const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
     for(let i=0; i<10; i++){
         rang1[letters[i]].cases.forEach(element => {
@@ -90,4 +89,14 @@ const formBoats = () => {
     document.body.appendChild(form.questions);
 }
 
-export {createBoard, listener, formBoats}
+
+// const listenerShip = (ship) => {
+//     for(let i=0; i<10; i++){
+//         for(let j=0; j<10; j++){
+//             addEventListener
+//         }
+//     }
+// }
+
+
+export {createBoard, setShootListener, formBoats}
