@@ -34,12 +34,13 @@ const gameBoard = () => {
     }
 
     const placeShip = (ship, cor, dir) => {
+        console.log("ship : ", ship);
+        console.log("cor : ", cor);
+        console.log("dir : ", dir);
         Ships.push(ship);
-        console.log(dir);
         let x = cor.x;
         let y = cor.y;
             for(let i= 0; i<ship.length; i++){
-                console.log(x, y);
                 board[x][y].boat = ship;
                 board[x][y].nbBoat = i;
                 if(dir === 'horizontal'){
