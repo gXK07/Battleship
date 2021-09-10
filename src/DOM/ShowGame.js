@@ -1,4 +1,5 @@
 // créer les boards de jeux au niveau du HTML (Humain ou IA)
+
 const createBoard = (type) => {
     let rang = {
         a : undefined,
@@ -49,8 +50,12 @@ const createBoard = (type) => {
 
 // Place les listener sur la board ennemie et déclanche l'attaque de l'IA dans 
 // la foulée
+
+
+let gameOver = false;
+
 const setShootListener = (rang1, rang2, player1, player2) => {
-    const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+    const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
     for(let i=0; i<10; i++){
         rang1[letters[i]].cases.forEach(element => {
             element.addEventListener('click', () => {
@@ -67,7 +72,6 @@ const setShootListener = (rang1, rang2, player1, player2) => {
                         element.classList.add('touch');
                     }
                     const cor = player2.AttackIA();
-                    console.log(cor);
                     if(player1.board.board[cor.x][cor.y].boat !== undefined){
                         rang2[cor.x].cases[cor.y].classList.add('hit');
                     }
@@ -75,20 +79,28 @@ const setShootListener = (rang1, rang2, player1, player2) => {
                         rang2[cor.x].cases[cor.y].classList.add('touch');
                     }
                     }
-                if(player1.board.gameOver()){
-                    alert("player 1 won !");
+                 if(player1.board.gameOver()){
+                    alert("IA won !");
+                    gameOver = true;
                 }
-                // probleme dans gameOver() -> quand le player1 gagne, le player 2 gagne aussi !!!!!!!!!!
                 if(player2.board.gameOver()){
-                    alert("player 2 won !");
+                    alert("Human player won !");
+                    gameOver = true;
                 }
             })
             })
         }
+
     }
+
+    const getGameOver = () => {
+        return gameOver
+    }
+
 const ShowGame = {
         createBoard,
-        setShootListener
+        setShootListener,
+        getGameOver
     }
 
 export {ShowGame}

@@ -1,11 +1,3 @@
-                // je veux check si quand on va dans la direction horizontal 
-                // pour  le nombre de cases de la taille du bateau, y a pas deja 
-                // un autre bateau ou que c'est pas la fin de la board, si oui,  
-                // changer de direction (horizontal) et recheck, et si y a aussi
-                // un bateau ou que c'est la fin de la board regénérer des 
-                // cordonées 
-
-
 const Player = (type, board, ennemyBoard) => {
     const Attack = (x, y) => {
         ennemyBoard.AttackShip(x, y)
@@ -41,7 +33,6 @@ const Player = (type, board, ennemyBoard) => {
                 return free
             }
             else if(dir === "vertical"){
-                // pourquoi ca rentre pas dans la boucle ? et pourquoi defois ca sort quand meme false ??
                 for(let i = 0; i<length; i++){
                     let nextChar = String.fromCharCode(cor.x.charCodeAt(0) + i);
                     if(board.board[nextChar] === undefined || 

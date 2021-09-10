@@ -1,6 +1,6 @@
 const gameBoard = () => {
 
-    const Ships = [];
+    let Ships = [];
 
     const field = () => {
         return {
@@ -34,10 +34,8 @@ const gameBoard = () => {
     }
 
     const placeShip = (ship, cor, dir) => {
-        console.log("ship : ", ship);
-        console.log("cor : ", cor);
-        console.log("dir : ", dir);
         Ships.push(ship);
+        console.log("Ships : ", Ships)
         let x = cor.x;
         let y = cor.y;
             for(let i= 0; i<ship.length; i++){
@@ -73,7 +71,7 @@ const gameBoard = () => {
         board,
         placeShip,
         AttackShip,
-        gameOver
+        gameOver,
     }
 }
 

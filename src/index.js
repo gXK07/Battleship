@@ -3,33 +3,52 @@ import css from "./style.css";
 import {DisplayPreGame, ShowGame} from "./DOM/IndexDOM";
 import { dataship } from "./DOM/PreGame";
 import {Ships, Ship} from "./ship";
+import { gameOver } from "./gameOver";
 const gameBoard = require('./gameBoard');
 
-const newGameBtn = document.getElementById('NG');
+let newGameBtn = document.getElementById('NG');
 const alphabet = ['a','b','c','d','e','f','g','h','i','j'];
 const game = () => {
     const boardHuman = gameBoard();
     const boardIA = gameBoard();
     const playerHuman = Player('Human', boardHuman, boardIA);
     const playerIA = Player('IA', boardIA, boardHuman);
-
-    for (let i = 0; i < Ships.length; i++){
-        playerIA.placeShipIA(Ships[i])
+    const ShipIA = [Ship('Carrier', 5), Ship('Battleship', 4), Ship('Cruiser', 3), 
+    Ship('Submarine', 2), Ship('Destroyer', 1)]
+    const ShipHuman = [Ship('Carrier', 5), Ship('Battleship', 4), Ship('Cruiser', 3), 
+    Ship('Submarine', 2), Ship('Destroyer', 1)]
+    for (let i = 0; i < 5; i++){
+        playerIA.placeShipIA(ShipIA[i])
     }
     newGameBtn.remove();
     let StartGame = DisplayPreGame(Ships);
     StartGame.addEventListener('click', () => {
-        console.log('dataship dans index : ', dataship);
         // maintenant utiliser le dataShip pour placer les bateaux sur la board
         const graphicBoardIA = ShowGame.createBoard('IA');
         const graphicBoardHuman = ShowGame.createBoard('Human');
         ShowGame.setShootListener(graphicBoardHuman, graphicBoardIA, playerHuman, playerIA);
         StartGame.remove();
-        Ships.forEach(ship => {
+        ShipHuman.forEach(ship => {
             const s = dataship[ship.name];
             boardHuman.placeShip(s.Ship, s.cor, s.dir)
         });
-        console.log("board human : ", boardHuman.board);
+        
+    // Essaie de faire mieux la semaine prochaine la je suis fatigué, check si tous les trucs
+    // sont bien vidés, la y a truc qui va pas ca génère 2 fois le même btn
+
+
+    //     document.addEventListener('click', () => {
+    //         if(ShowGame.getGameOver()){
+    //         gameOver([boardHuman, boardIA, playerHuman, playerIA, ShipHuman,
+    //             ShipIA, graphicBoardIA, graphicBoardHuman], newGameBtn)
+    //             newGameBtn = document.createElement('button');
+    //             document.body.appendChild(newGameBtn);
+    //             newGameBtn.setAttribute('id', 'NG');
+    //             newGameBtn.textContent = "New Game";
+    //     }
+        
+    // })
+        
         // si tu veux montrer à l'avance les bateaux de l'ennemi ^ remettre l'aphabet en haut ^ :
 
         for (let i = 0; i<10; i++){
