@@ -20,6 +20,7 @@ const game = () => {
     for (let i = 0; i < 5; i++){
         playerIA.placeShipIA(ShipIA[i])
     }
+    console.log(newGameBtn)
     newGameBtn.remove();
     let StartGame = DisplayPreGame(Ships);
     StartGame.addEventListener('click', () => {
@@ -37,17 +38,20 @@ const game = () => {
     // sont bien vidés, la y a truc qui va pas ca génère 2 fois le même btn
 
 
-    //     document.addEventListener('click', () => {
-    //         if(ShowGame.getGameOver()){
-    //         gameOver([boardHuman, boardIA, playerHuman, playerIA, ShipHuman,
-    //             ShipIA, graphicBoardIA, graphicBoardHuman], newGameBtn)
-    //             newGameBtn = document.createElement('button');
-    //             document.body.appendChild(newGameBtn);
-    //             newGameBtn.setAttribute('id', 'NG');
-    //             newGameBtn.textContent = "New Game";
-    //     }
+        document.addEventListener('click', () => {
+            if(ShowGame.getGameOver()){
+            alert("heeeey");
+            gameOver([boardHuman, boardIA, playerHuman, playerIA, ShipHuman,
+                ShipIA, graphicBoardIA, graphicBoardHuman])
+                newGameBtn = document.createElement('button');
+                document.body.appendChild(newGameBtn);
+                newGameBtn.setAttribute('id', 'NG');
+                newGameBtn.textContent = "New Game";
+                newGameBtn.addEventListener('click', game)
+                ShowGame.setGameOver();
+        }
         
-    // })
+    })
         
         // si tu veux montrer à l'avance les bateaux de l'ennemi ^ remettre l'aphabet en haut ^ :
 

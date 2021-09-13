@@ -80,6 +80,7 @@ const setShootListener = (rang1, rang2, player1, player2) => {
                     }
                     }
                  if(player1.board.gameOver()){
+                     
                     alert("IA won !");
                     gameOver = true;
                 }
@@ -97,10 +98,15 @@ const setShootListener = (rang1, rang2, player1, player2) => {
         return gameOver
     }
 
+    const setGameOver = () => {
+        gameOver = false;
+    }
+
 const ShowGame = {
         createBoard,
         setShootListener,
-        getGameOver
+        getGameOver,
+        setGameOver
     }
 
 export {ShowGame}
